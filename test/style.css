@@ -46,7 +46,7 @@ body {
 	background: #222;
 	border-radius: 20px;
 	width: 70%; /* 💡 슬라이드 하나의 너비를 줄여야 뒤에가 보임 */
-	max-width: 300px;
+	margin: 0 auto;
 	box-sizing: border-box;
 	padding-left: 40px;
 	padding-right: 40px;
