@@ -1,11 +1,14 @@
+html,
+body {
+  width: 100%;
+}
+
 body {
   background: black;
   margin: 40px 20px 0 0;
   padding: 0;
   font-family: sans-serif;
   color: white;
-  display: flex;
-  justify-content: center;
 }
 
 /* 네비게이션 바 */
@@ -45,11 +48,12 @@ body {
 .swiper-slide {
   background: #222;
   border-radius: 20px;
-  width: 70%; /* 💡 슬라이드 하나의 너비를 줄여야 뒤에가 보임 */
+  width: 300px; /* 💡 슬라이드 하나의 너비를 줄여야 뒤에가 보임 */
   margin: 0 auto;
   box-sizing: border-box;
   padding-left: 40px;
   padding-right: 40px;
+  box-sizing: border-box;
   overflow: visible;
   height: 300px;
   line-height: 300px;
@@ -63,11 +67,68 @@ body {
 .swiper-slide-active {
   transform: scale(1.05);
 }
+@media (max-width: 960px) {
+  :root {
+    --card-width: 120px;
+    --card-height: 180px;
+  }
+
+  .slide {
+    flex: 0 0 95%;
+    height: 140px;
+    font-size: 1.1rem;
+  }
+}
 
 @media (max-width: 480px) {
+  :root {
+    --card-width: 100px;
+    --card-height: 150px;
+  }
+
   .swiper-slide {
     width: 85%;
     height: 200px;
   }
 }
 /*수정*/
+
+/* 랭킹 섹션 전체 영역 */
+.ranking-section {
+  overflow-x: hidden;
+  padding: 0 16px; /* 좌우 여백 */
+  max-width: 960px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* 카드 슬라이드 영역 */
+.card-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 1rem 20px;
+  margin: 0;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.card-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* 카드 스타일 */
+.card {
+  flex: 0 0 auto;
+  width: 150px;
+  height: 220px;
+  background: #fff;
+  border-radius: 10px;
+  scroll-snap-align: start;
+  color: #000;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
