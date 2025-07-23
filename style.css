@@ -35,38 +35,12 @@ body {
 /* 메인 슬라이더 시작 */
 .swiper-container {
   width: 100%;
-  max-width: 960px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 40px;
   overflow: hidden;
-  position: relative;
   box-sizing: border-box;
-  border-radius: 1rem;
 }
-.swiper-container::before,
-.swiper-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 60px; /* 그라데이션 폭 조절 가능 */
-  height: 100%;
-  pointer-events: none; /* 클릭 방해 안 하도록 */
-  z-index: 10; /* 슬라이더 위에 올라오도록 */
-}
-
-.swiper-container::before {
-  left: 0;
-  background: linear-gradient(to right, rgb(67, 67, 67), transparent);
-  /* 배경색이 흰색이 아니라면 white 대신 배경색으로 변경 */
-}
-
-.swiper-container::after {
-  right: 0;
-  background: linear-gradient(to left, rgb(67, 67, 67), transparent);
-  /* 배경색 맞게 조절 */
-}
-
-/* 메인 슬라이더 종료 */
 
 .swiper-wrapper {
   align-items: center;
@@ -123,7 +97,7 @@ body {
 .ranking-section {
   overflow-x: hidden;
   padding: 0 16px; /* 좌우 여백 */
-  max-width: 960px;
+  max-width: 1200px;
   margin: 0 auto;
   box-sizing: border-box;
 }
