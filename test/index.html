@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>오늘 뭐 볼까?</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-left">
+        <div class="logo">오늘 뭐 볼까?</div>
+      </div>
+      <div class="header-right">
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="검색어를 입력하세요..."
+            class="search-input"
+          />
+          <button class="search-button">검색</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- OTT 플랫폼 목록을 헤더 밖, main 안 최신작 위에 배치 -->
+    <section class="platform-list">
+      <nav class="platform-tabs">
+        <button class="tab-button active">전체</button>
+        <button class="tab-button">넷플릭스</button>
+        <button class="tab-button">티빙</button>
+        <button class="tab-button">웨이브</button>
+        <button class="tab-button">디즈니+</button>
+        <button class="tab-button">쿠팡플레이</button>
+      </nav>
+    </section>
+
+    <main>
+      <section class="slider-area">
+        <h2>최신작</h2>
+        <div class="carousel-container">
+          <div class="carousel-track" id="newReleasesTrack"></div>
+        </div>
+      </section>
+
+      <section class="ott-ranking-section">
+        <h2>사용자를 위한 추천</h2>
+        <div class="ranking-carousel" id="userRecsRanking">
+          <!-- JavaScript로 추천 콘텐츠가 동적으로 추가될 영역 -->
+        </div>
+      </section>
+
+      <section class="ott-ranking-section">
+        <h2>OTT별 인기 콘텐츠</h2>
+
+        <div class="ott-platform-ranking">
+          <h3>넷플릭스 TOP10</h3>
+          <div class="ranking-carousel" id="netflixRanking">
+            <!-- JavaScript로 넷플릭스 인기 콘텐츠가 추가될 영역 -->
+          </div>
+        </div>
+
+        <div class="ott-platform-ranking">
+          <h3>디즈니+ TOP10</h3>
+          <div class="ranking-carousel" id="disneyRanking">
+            <!-- JavaScript로 디즈니+ 인기 콘텐츠가 추가될 영역 -->
+          </div>
+        </div>
+
+        <div class="ott-platform-ranking">
+          <h3>웨이브 TOP10</h3>
+          <div class="ranking-carousel" id="wavveRanking">
+            <!-- JavaScript로 웨이브 인기 콘텐츠가 추가될 영역 -->
+          </div>
+        </div>
+
+        <div class="ott-platform-ranking">
+          <h3>쿠팡플레이 TOP10</h3>
+          <div class="ranking-carousel" id="coupangRanking">
+            <!-- JavaScript로 쿠팡플레이 인기 콘텐츠가 추가될 영역 -->
+          </div>
+        </div>
+
+        <div class="ott-platform-ranking">
+          <h3>티빙 TOP10</h3>
+          <div class="ranking-carousel" id="tvingRanking">
+            <!-- JavaScript로 티빙 인기 콘텐츠가 추가될 영역 -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#">이용약관</a>
+        <a href="#">제작자 정보</a>
+        <a href="#">문의하기</a>
+      </div>
+      <div class="footer-logos"><span>TMDB</span> | <span>JustWatch</span></div>
+    </footer>
+
+    <!-- 로그인 모달 관련 HTML이 삭제되었습니다 -->
+
+    <script src="script.js"></script>
+  </body>
+</html>
