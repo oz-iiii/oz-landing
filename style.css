@@ -1,133 +1,577 @@
-html,
-body {
-  width: 100%;
-}
-
-body {
-  background: black;
-  margin: 40px 20px 0 0;
+/* 기본 초기화 */
+* {
+  margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  color: white;
+  box-sizing: border-box;
 }
 
-/* 네비게이션 바 */
-.navbar {
-  width: 100%;
-  height: 60px;
-  background-color: #111;
+/* body 스타일 */
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 1.6;
+  color: #f0f0f0; /* 밝은 회색 텍스트 */
+  background-color: #0c0c0c; /* 아주 어두운 배경 */
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  padding: 0 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  position: fixed;
+  flex-direction: column;
+  padding-top: 80px; /* 고정 내비게이션 바 높이만큼 패딩 추가 */
+}
+
+main {
+  flex-grow: 1;
+}
+
+/* 고정 내비게이션 바 스타일 */
+.fixed-navbar {
+  position: fixed; /* 화면 상단에 고정 */
   top: 0;
   left: 0;
-  z-index: 100;
-}
-
-.navbar-title {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-}
-
-/* 메인 슬라이더 시작 */
-.swiper-container {
   width: 100%;
+  background-color: #000; /* 완전 검정 배경 */
+  padding: 15px 40px; /* 패딩 */
+  display: flex;
+  justify-content: space-between; /* 로고와 버튼 양 끝 배치 */
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); /* 그림자 추가 */
+  z-index: 1000; /* 다른 콘텐츠 위에 표시 */
+}
+
+.navbar-logo {
+  color: #fff; /* 흰색 로고 */
+  text-decoration: none; /* 밑줄 제거 */
+  display: flex;
+  flex-direction: column; /* 로고 메인과 서브를 세로로 정렬 */
+  align-items: flex-start; /* 왼쪽 정렬 */
+  transition: color 0.3s ease;
+}
+
+.navbar-logo:hover .logo-primary {
+  color: #ccff00; /* 강조색으로 호버 효과 */
+}
+
+.logo-primary {
+  font-size: 1.8em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: flex; /* 이미지와 텍스트를 가로로 정렬 */
+  align-items: center;
+  line-height: 1; /* 줄 간격 조절 */
+}
+
+.cat-icon-image {
+  height: 1.5em; /* 글자 크기에 맞춰 높이 조절. 필요에 따라 px 값으로 고정 가능 */
+  width: auto; /* 가로 세로 비율 유지 */
+  margin-right: 8px; /* 이미지와 텍스트 간격 */
+  vertical-align: middle; /* 텍스트와 세로 정렬 */
+}
+
+.logo-secondary {
+  font-size: 0.85em; /* 소제목 크기 */
+  color: #aaa; /* 더 연한 색상 */
+  margin-top: 5px; /* 메인 로고와 소제목 간격 */
+  letter-spacing: 0.3px;
+  line-height: 1; /* 줄 간격 조절 */
+}
+
+.navbar-button {
+  /* 기존 .button 스타일 재활용, 크기만 조정 */
+  padding: 10px 25px;
+  font-size: 1em;
+  border-radius: 5px; /* 티빙 느낌의 살짝 각진 버튼 */
+}
+
+/* 섹션 공통 스타일 */
+.section {
+  padding: 80px 20px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-.swiper-wrapper {
-  align-items: center;
-}
-
-.swiper-slide {
-  background: #222;
-  border-radius: 20px;
-  width: 300px; /* 💡 슬라이드 하나의 너비를 줄여야 뒤에가 보임 */
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding-left: 40px;
-  padding-right: 40px;
-  box-sizing: border-box;
-  overflow: visible;
-  height: 300px;
-  line-height: 300px;
-  font-size: 24px;
-  font-weight: bold;
   text-align: center;
-  transition: transform 0.3s ease;
 }
 
-/* 선택된 슬라이드 강조 */
-.swiper-slide-active {
-  transform: scale(1.05);
+.section-title {
+  font-size: 3em;
+  color: #fff; /* 흰색 제목 */
+  margin-bottom: 50px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
-@media (max-width: 960px) {
-  :root {
-    --card-width: 120px;
-    --card-height: 180px;
+
+/* 히어로 섹션 */
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
+    /* 이미지 위에 어두운 오버레이 */ url("img/ott-posters-bg.png") center
+      center / cover no-repeat; /* 배경 이미지 설정 */
+  color: #fff;
+  padding: 120px 20px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 -15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.hero-section h1 {
+  font-size: 4.5em;
+  margin-bottom: 25px;
+  font-weight: 900;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  line-height: 1.2; /* 헤드카피 줄간격 조정 */
+}
+
+.hero-section .slogan {
+  font-size: 2.2em;
+  font-weight: 400;
+  margin-bottom: 30px; /* 슬로건과 메인 메시지 간격 조정 */
+  color: #ccff00; /* 강조색 변경 */
+  line-height: 1.4;
+}
+
+.hero-section .main-message {
+  font-size: 1.4em;
+  margin-bottom: 50px; /* 메인 메시지와 비주얼 플레이스홀더 간격 조정 */
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+/* 버튼 공통 스타일 */
+.button {
+  display: inline-block;
+  background-color: #ccff00; /* 버튼 색상 유지 (빨간색) */
+  color: black;
+  padding: 18px 40px;
+  font-size: 1.4em;
+  font-weight: 700;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  border: none;
+}
+
+.button:hover {
+  background-color: #ccff00; /* 버튼 호버 색상 유지 */
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.cta-hero-button {
+  margin-top: 40px;
+}
+
+/* CTA 소제목 스타일 (새로 추가) */
+.cta-subtext {
+  font-size: 1.1em;
+  color: #aaa;
+  margin-top: 20px; /* 버튼과의 간격 */
+  line-height: 1.5;
+}
+
+/* 문제점 섹션 */
+.problem-section {
+  background-color: #111; /* 더 어두운 섹션 배경 */
+  padding-top: 100px;
+  padding-bottom: 100px;
+  box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.3),
+    inset 0 -10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.problem-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.problem-item {
+  background-color: #222; /* 어두운 카드 배경 */
+  border-radius: 10px;
+  padding: 45px 35px 35px; /* 상단 패딩 늘림 */
+  flex: 1;
+  min-width: 300px;
+  max-width: 380px;
+  text-align: center; /* 카드 내용 전체를 가운데 정렬 */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08); /* 은은한 테두리 */
+}
+
+.problem-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 200, 255, 0.2); /* 강조색 그림자 변경 */
+}
+
+/* 가치 섹션 */
+.value-section {
+  background-color: #0c0c0c; /* 메인 배경과 동일 */
+  color: #fff;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.value-propositions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.value-item {
+  background-color: #222;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 45px 35px 35px; /* 상단 패딩 늘림 */
+  flex: 1;
+  min-width: 300px;
+  max-width: 380px;
+  text-align: center; /* 카드 내용 전체를 가운데 정렬 */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 200, 255, 0.2); /* 강조색 그림자 변경 */
+}
+
+.value-item h3 {
+  font-size: 2em;
+  color: #fff; /* 흰색으로 통일 */
+  margin-bottom: 20px;
+}
+
+.value-item p {
+  font-size: 1.15em;
+  color: #e0e0e0;
+}
+
+/* 기능 섹션 */
+.features-section {
+  background-color: #111;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.3),
+    inset 0 -10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+.feature-item {
+  background-color: #222;
+  border-radius: 10px;
+  padding: 45px 35px 35px; /* 상단 패딩 늘림 */
+  text-align: center; /* <<< 여기가 중요! 기존 'left'에서 'center'로 변경 */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.feature-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 200, 255, 0.2); /* 강조색 그림자 변경 */
+}
+
+.feature-item h3 {
+  font-size: 1.8em;
+  color: #fff; /* 흰색 제목 */
+  margin-bottom: 15px;
+}
+
+.feature-item p {
+  font-size: 1.1em;
+  color: #e0e0e0;
+}
+
+.feature-visual {
+  background-color: rgba(255, 255, 255, 0.05); /* 투명 배경은 유지 */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0; /* 이미지가 꽉 차도록 패딩 제거 */
+  margin: 60px auto;
+  max-width: 1100px;
+  height: 450px; /* 높이 유지 (이미지가 이 크기에 맞춰 조정됨) */
+  display: flex; /* 이미지를 중앙에 배치하기 위함 */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* 이미지가 박스 밖으로 나가지 않게 자르기 */
+  box-shadow: 0 0 30px rgba(0, 200, 255, 0.2); /* 강조색 그림자 변경 */
+}
+
+/* 새로 추가된 이미지 스타일 */
+.feature-content-image {
+  width: 100%; /* 부모 div에 꽉 차게 */
+  height: 100%; /* 부모 div에 꽉 차게 */
+  object-fit: cover; /* 이미지가 잘리더라도 영역을 꽉 채우도록 */
+  border-radius: 8px; /* 부모 div와 동일하게 둥근 모서리 적용 */
+}
+
+/* CTA 섹션 */
+.cta-section {
+  background-color: #0c0c0c;
+  padding: 100px 20px;
+  color: #fff;
+  box-shadow: inset 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.cta-section h2 {
+  color: #fff;
+  margin-bottom: 50px;
+  font-size: 3em;
+}
+
+.main-cta-button {
+  font-size: 1.8em;
+  padding: 20px 45px;
+  margin-bottom: 25px;
+}
+
+.small-text {
+  font-size: 1em;
+  color: #aaa;
+}
+
+/* 푸터 */
+footer {
+  background-color: #080808; /* 더 어두운 푸터 배경 */
+  color: #777;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.95em;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+footer p {
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+
+/* --- 아이콘 이미지 관련 스타일 (크기 및 간격 조절) --- */
+
+/* 아이콘 이미지 컨테이너 공통 스타일 */
+.problem-item .icon,
+.value-item .icon,
+.feature-item .icon {
+  width: 150px; /* 아이콘 컨테이너의 너비 증가 */
+  height: 150px; /* 아이콘 컨테이너의 높이 증가 */
+  display: flex; /* 이미지 중앙 정렬을 위해 Flexbox 사용 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  margin: 0 auto; /* <<-- 모든 아이콘 컨테이너를 부모 안에서 중앙 정렬 */
+}
+
+/* 아이콘 이미지 자체 스타일 (컨테이너에 맞춰 크기 조절) */
+.problem-item .icon img,
+.value-item .icon img,
+.feature-item .icon img {
+  max-width: 100%; /* 부모 컨테이너 너비에 맞춤 */
+  max-height: 100%; /* 부모 컨테이너 높이에 맞게 축소 */
+  object-fit: contain; /* 이미지 비율을 유지하며 컨테이너에 맞게 축소 */
+}
+
+/* 각 섹션별 아이콘 디테일 및 간격 수정 */
+.problem-item .icon {
+  margin-bottom: 40px; /* 아이콘과 텍스트 사이 간격 확보 */
+}
+
+.value-item .icon {
+  margin-bottom: 35px; /* 아이콘과 텍스트 사이 간격 확보 */
+}
+
+.feature-item .icon {
+  margin-bottom: 35px; /* 아이콘과 텍스트 사이 간격 확보 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+  .section-title {
+    font-size: 2.5em;
+  }
+  .hero-section h1 {
+    font-size: 3.8em;
+  }
+  .hero-section .slogan {
+    font-size: 1.8em;
+  }
+}
+
+@media (max-width: 768px) {
+  /* 내비게이션 바 높이 고려하여 body 패딩 조정 */
+  body {
+    padding-top: 65px; /* 모바일에서 로고+소제목 높이 고려 */
+  }
+  .fixed-navbar {
+    padding: 8px 20px; /* 모바일에서 패딩 줄이기 */
+  }
+  .navbar-logo {
+    align-items: center; /* 로고와 소제목 중앙 정렬 */
+  }
+  .logo-primary {
+    font-size: 1.4em;
+  }
+  .cat-icon-image {
+    height: 1.3em; /* 모바일에서 이미지 크기 조정 */
+    margin-right: 6px;
+  }
+  .logo-secondary {
+    font-size: 0.75em; /* 모바일에서 소제목 크기 조정 */
+    margin-top: 2px;
+  }
+  .navbar-button {
+    padding: 8px 18px;
+    font-size: 0.85em;
   }
 
-  .slide {
-    flex: 0 0 95%;
-    height: 140px;
-    font-size: 1.1rem;
+  .hero-section h1 {
+    font-size: 3em;
+    margin-bottom: 20px; /* 모바일에서 간격 조정 */
+  }
+
+  .hero-section .slogan {
+    font-size: 1.5em;
+    margin-bottom: 20px; /* 모바일에서 간격 조정 */
+  }
+
+  .hero-section .main-message {
+    font-size: 1.2em;
+    margin-bottom: 40px; /* 모바일에서 간격 조정 */
+  }
+
+  .cta-subtext {
+    font-size: 1em;
+    margin-top: 15px;
+  }
+
+  .section-title {
+    font-size: 2.2em;
+  }
+
+  .problem-list,
+  .value-propositions {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .problem-item,
+  .value-item,
+  .feature-item {
+    width: 100%;
+    max-width: 450px;
+    padding: 40px 30px 30px; /* 모바일에서 상하단 패딩 조정 */
+  }
+
+  .feature-list {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .feature-visual {
+    height: 250px; /* 모바일에서 높이 조정 */
+    margin: 40px auto;
+    padding: 0; /* 모바일에서도 패딩 제거 */
+  }
+
+  .button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+  }
+
+  .cta-section h2 {
+    font-size: 2.5em;
+  }
+
+  .main-cta-button {
+    font-size: 1.5em;
+    padding: 18px 35px;
+  }
+
+  /* 768px 이하 화면에서 아이콘 크기 및 간격 조절 */
+  .problem-item .icon,
+  .value-item .icon,
+  .feature-item .icon {
+    width: 120px; /* 아이콘 컨테이너 너비 증가 */
+    height: 120px; /* 아이콘 컨테이너 높이 증가 */
+    margin: 0 auto 30px; /* 아이콘 컨테이너 중앙 정렬 및 아래 마진 */
   }
 }
 
 @media (max-width: 480px) {
-  :root {
-    --card-width: 100px;
-    --card-height: 150px;
+  body {
+    padding-top: 60px; /* 아주 작은 화면에서는 더 줄이기 */
+  }
+  .fixed-navbar {
+    padding: 6px 15px;
+  }
+  .logo-primary {
+    font-size: 1.2em;
+  }
+  .cat-icon-image {
+    height: 1.1em;
+    margin-right: 5px;
+  }
+  .logo-secondary {
+    font-size: 0.7em;
+  }
+  .navbar-button {
+    padding: 5px 12px;
+    font-size: 0.75em;
   }
 
-  .swiper-slide {
-    width: 85%;
-    height: 200px;
+  .hero-section {
+    padding: 80px 15px 50px;
   }
-}
 
-/* 랭킹 섹션 전체 영역 */
-.ranking-section {
-  overflow-x: hidden;
-  padding: 0 16px; /* 좌우 여백 */
-  max-width: 1200px;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
+  .hero-section h1 {
+    font-size: 2.5em;
+  }
 
-/* 카드 슬라이드 영역 */
-.card-scroll {
-  display: flex;
-  overflow-x: auto;
-  gap: 16px;
-  padding: 1rem 20px;
-  margin: 0;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-.card-scroll::-webkit-scrollbar {
-  display: none;
-}
+  .hero-section .slogan {
+    font-size: 1.2em;
+  }
 
-/* 카드 스타일 */
-.card {
-  flex: 0 0 auto;
-  width: 150px;
-  height: 220px;
-  background: #fff;
-  border-radius: 10px;
-  scroll-snap-align: start;
-  color: #000;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  .section {
+    padding: 60px 15px;
+  }
+
+  .section-title {
+    font-size: 1.8em;
+    margin-bottom: 40px;
+  }
+
+  .problem-item,
+  .value-item,
+  .feature-item {
+    padding: 35px 25px 25px; /* 아주 작은 화면에서 상하단 패딩 조정 */
+  }
+
+  /* 480px 이하 화면에서 아이콘 크기 및 간격 조절 */
+  .problem-item .icon,
+  .value-item .icon,
+  .feature-item .icon {
+    width: 90px; /* 아이콘 컨테이너 너비 증가 */
+    height: 90px; /* 아이콘 컨테이너 높이 증가 */
+    margin: 0 auto 25px; /* 아이콘 컨테이너 중앙 정렬 및 아래 마진 */
+  }
+
+  .feature-item h3 {
+    font-size: 1.6em;
+  }
+
+  .cta-section h2 {
+    font-size: 2em;
+  }
+
+  .main-cta-button {
+    font-size: 1.3em;
+    padding: 15px 30px;
+  }
+
+  .feature-visual {
+    height: 180px;
+    padding: 0;
+  }
 }

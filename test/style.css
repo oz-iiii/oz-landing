@@ -54,10 +54,63 @@ a:hover {
   justify-content: center; /* 중앙 정렬 */
   margin: 0 20px; /* 좌우 여백 */
 }
-
-.platform-tabs {
+.header-right {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+
+.profile-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.profile-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.profile-button svg {
+  display: block;
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
+
+.platform-list {
+  background-color: #0d0d0d;
+  padding: 10px 40px;
+  border-bottom: 1px solid #333;
+}
+
+.platform-list .platform-tabs {
+  display: flex;
+  gap: 15px;
+  justify-content: center; /* 가운데 정렬 */
+}
+
+.platform-list .tab-button {
+  background: none;
+  border: none;
+  color: #f5f5f5;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.platform-list .tab-button:hover {
+  background-color: #333;
+}
+
+.platform-list .tab-button.active {
+  background-color: #e50914;
+  font-weight: bold;
 }
 
 .platform-tabs .tab-button {
