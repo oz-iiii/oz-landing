@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("오늘 뭐 볼까? 랜딩 페이지 로드 완료!");
+  console.log("Feelter 랜딩 페이지 로드 완료!");
 
   const ctaButton = document.querySelector(".main-cta-button");
   if (ctaButton) {
