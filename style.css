@@ -120,7 +120,7 @@ main {
 .hero-section .slogan {
   font-size: 2.2em;
   font-weight: 400;
-  margin-bottom: 30px; /* 슬로건과 메인 메시지 간격 조정 */
+  margin-bottom: 60px; /* 슬로건과 메인 메시지 간격 조정 */
   color: #ccff00; /* 강조색 변경 */
   line-height: 1.4;
 }
@@ -132,6 +132,10 @@ main {
   margin-left: auto;
   margin-right: auto;
   line-height: 1.8;
+}
+
+.main-message h3 {
+  margin-bottom: 30px; /* h3 아래에 여백 추가 */
 }
 
 /* 버튼 공통 스타일 */
@@ -249,7 +253,7 @@ main {
 .features-section {
   background-color: #111;
   padding-top: 100px;
-  padding-bottom: 100px;
+  padding-bottom: 10px;
   box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.3),
     inset 0 -10px 20px rgba(0, 0, 0, 0.3);
 }
