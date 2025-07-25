@@ -259,16 +259,21 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 40px;
   margin-bottom: 80px;
+  justify-content: center; /* 그리드 트랙 자체를 중앙에 정렬 */
+  justify-items: center; /* 각 그리드 아이템(카드) 자체를 그리드 셀 안에서 가운데 정렬 */
 }
 
 .feature-item {
   background-color: #222;
   border-radius: 10px;
   padding: 45px 35px 35px; /* 상단 패딩 늘림 */
-  text-align: center; /* <<< 여기가 중요! 기존 'left'에서 'center'로 변경 */
+  text-align: center; /* 카드 내용 전체를 가운데 정렬 */
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  /* 각 아이템의 너비를 명시적으로 설정하여 justify-content가 작동할 공간을 확보 */
+  width: 100%; /* 부모 그리드 셀에 꽉 차도록 */
+  max-width: 380px; /* 개별 카드 최대 너비 설정 */
 }
 
 .feature-item:hover {
@@ -360,7 +365,7 @@ footer p {
   display: flex; /* 이미지 중앙 정렬을 위해 Flexbox 사용 */
   justify-content: center; /* 가로 중앙 정렬 */
   align-items: center; /* 세로 중앙 정렬 */
-  margin: 0 auto; /* <<-- 모든 아이콘 컨테이너를 부모 안에서 중앙 정렬 */
+  margin: 0 auto; /* 모든 아이콘 컨테이너를 부모 안에서 중앙 정렬 */
 }
 
 /* 아이콘 이미지 자체 스타일 (컨테이너에 맞춰 크기 조절) */
@@ -465,8 +470,10 @@ footer p {
   }
 
   .feature-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 한 열로 변경하여 중앙 정렬에 용이하게 */
     gap: 30px;
+    justify-content: center; /* 이 컨테이너 자체를 중앙 정렬 시도 */
+    justify-items: center; /* 각 아이템을 셀 안에서 중앙 정렬 */
   }
 
   .feature-visual {
@@ -540,12 +547,6 @@ footer p {
   .section-title {
     font-size: 1.8em;
     margin-bottom: 40px;
-  }
-
-  .problem-item,
-  .value-item,
-  .feature-item {
-    padding: 35px 25px 25px; /* 아주 작은 화면에서 상하단 패딩 조정 */
   }
 
   /* 480px 이하 화면에서 아이콘 크기 및 간격 조절 */
